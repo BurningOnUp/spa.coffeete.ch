@@ -1,0 +1,20 @@
+<html>
+<head>
+<title>CoffeeTe.ch</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body ng-app="coffeetech">
+<div class="container" ng-controller="ShopsCtrl">
+<div class="row" ng-repeat="shop in shops">
+<div class="col-md-6"> {{ shop.name }} </div>
+<div class="col-md-6"> {{ shop.lat }} {{ shop.lng }} </div>
+</div>
+</div>
+<script
+src="angular.min.js"></script>
+<stylesheet
+src="bootstrap.min.css"></stylesheet>
+<script src="github.js"></script>
+<script src="coffeetech.js"></script>
+</body>
+</html>
