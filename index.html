@@ -2,19 +2,25 @@
 <head>
 <title>CoffeeTe.ch</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="bootstrap.min.css"></link>
 </head>
 <body ng-app="coffeetech">
-<div class="container" ng-controller="ShopsCtrl">
-<div class="row" ng-repeat="shop in shops">
-<div class="col-md-6"> {{ shop.name }} </div>
-<div class="col-md-6"> {{ shop.lat }} {{ shop.lng }} </div>
+<div class="container" ng-controller="GithubCtrl" ng-init="init()">
+
+<h1>CoffeeTe.ch</h1>
+
+<ng-include src="'add_new.html'"/>
+<ng-include src="'display.html'"/>
+
 </div>
-</div>
-<script
-src="angular.min.js"></script>
-<stylesheet
-src="bootstrap.min.css"></stylesheet>
+
+<script src="angular.js"></script>
+<script src="underscore-min.js"></script>
+<script src="base64.min.js"></script>
 <script src="github.js"></script>
 <script src="coffeetech.js"></script>
+
+
+
 </body>
 </html>

@@ -1,0 +1,17 @@
+<button ng-click="add=!add">{{!add&&"Add new coffeeshop..."||"Hide form"}}</button>
+<div ng-show="add">
+<form>
+<fieldset>
+<legend>Add new coffeeshop</legend>
+<div class="control-group">
+<label class="control-label input-label" for="name">Name:</label>
+<div class="controls">
+<input type="text" type="text" id="name" name="name"
+       ng-model="addition.name"
+placeholder="Enter name of coffeeshop..." />
+</div>
+</div>
+</fieldset>
+<button ng-click="addNewCoffeeshop(addition)">Add it</button>
+</form>
+</div>
