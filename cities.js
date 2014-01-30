@@ -1,2 +1,2 @@
-var CITIES = [ { name: "portland", lat: 45, lng: 45 },
-  { name: "seattle", lat: 47.662613, lng: -122.323837 } ];
+var CITIES = [ { name: "portland", latitude: 45, longitude: 45 },
+  { name: "seattle", latitude: 47.662613, longitude: -122.323837 } ];

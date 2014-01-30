@@ -11,8 +11,8 @@ mod.factory( 'Geo', [ '$window', function( $window ) {
 mod.controller( 'GithubCtrl', [ '$scope', 'Github', 'Geo', function( $scope, ghs, Geo ) {
     $scope.init = function() {
         $scope.getCurrentLocation( function( position ) {
-            $scope.lat = position.coords.latitude || position.coords.lat;
-            $scope.lng = position.coords.longitude || position.coords.lng;
+            $scope.latitude = position.coords.latitude;
+            $scope.longitude = position.coords.longitude;
             $scope.repo = ghs.getRepo( "xrd", "spa.coffeete.ch" ); // # <1>
             $scope.repo.read( "gh-pages", "cities.json", function(err, data) { // # <2>
                 $scope.cities = JSON.parse( data ); // # <3>
@@ -33,11 +33,11 @@ mod.controller( 'GithubCtrl', [ '$scope', 'Github', 'Geo', function( $scope, ghs
     };
 
     $scope.detectCurrentCity = function() {
-        // Calculate the distance from our current position and use
+        // Calculatitudee the distance from our current position and use
         // this to determine which city we are closest to and within
         // 25 miles
         for( var i = 0; i < $scope.cities.length; i++ ) {
-            var dist = $scope.calculateDistance( $scope.lat, $scope.lng, $scope.cities[i].lat, $scope.cities[i].lng );
+            var dist = calculateDistance( $scope.latitude, $scope.longitude, $scope.cities[i].latitude, $scope.cities[i].longitude );
             if( dist < 25 ) {
                 $scope.city = $scope.cities[i];
                 break;
@@ -49,13 +49,13 @@ mod.controller( 'GithubCtrl', [ '$scope', 'Github', 'Geo', function( $scope, ghs
         return Value * Math.PI / 180;
     };
     
-    $scope.calculateDistance = function( lat1, lon1, lat2, lon2 ) {
+    calculateDistance = function( latitude1, longitude1, latitude2, longitude2 ) {
         R = 6371;
-        dLat = toRad(lat2 - lat1);
-        dLon = toRad(lon2 - lon1);
-        lat1 = toRad(lat1);
-        lat2 = toRad(lat2);
-        a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
+        dLatitude = toRad(latitude2 - latitude1);
+        dLongitude = toRad(longitude2 - longitude1);
+        latitude1 = toRad(latitude1);
+        latitude2 = toRad(latitude2);
+        a = Math.sin(dLatitude / 2) * Math.sin(dLatitude / 2) + Math.sin(dLongitude / 2) * Math.sin(dLongitude / 2) * Math.cos(latitude1) * Math.cos(latitude2);
         c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         d = R * c;
         return d;
