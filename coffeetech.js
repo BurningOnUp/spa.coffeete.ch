@@ -33,11 +33,11 @@ mod.controller( 'GithubCtrl', [ '$scope', 'Github', 'Geo', function( $scope, ghs
     };
 
     $scope.detectCurrentCity = function() {
-        // Calculatitudee the distance from our current position and use
+        // Calculate the distance from our current position and use
         // this to determine which city we are closest to and within
         // 25 miles
         for( var i = 0; i < $scope.cities.length; i++ ) {
-            var dist = calculateDistance( $scope.latitude, $scope.longitude, $scope.cities[i].latitude, $scope.cities[i].longitude );
+            var dist = $scope.calculateDistance( $scope.latitude, $scope.longitude, $scope.cities[i].latitude, $scope.cities[i].longitude );
             if( dist < 25 ) {
                 $scope.city = $scope.cities[i];
                 break;
@@ -49,7 +49,7 @@ mod.controller( 'GithubCtrl', [ '$scope', 'Github', 'Geo', function( $scope, ghs
         return Value * Math.PI / 180;
     };
     
-    calculateDistance = function( latitude1, longitude1, latitude2, longitude2 ) {
+    $scope.calculateDistance = function( latitude1, longitude1, latitude2, longitude2 ) {
         R = 6371;
         dLatitude = toRad(latitude2 - latitude1);
         dLongitude = toRad(longitude2 - longitude1);

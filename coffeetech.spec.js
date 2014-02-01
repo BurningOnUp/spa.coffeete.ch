@@ -45,6 +45,12 @@ describe( "GithubCtrl", function() {
             expect( scope.city.name ).toEqual( "portland" );
         });
     });
+
+    describe( "#calculateDistance", function() {
+        it( "should find distance between two points", function() {
+            expect( parseInt( scope.calculateDistance( 14.599512, 120.98422, 10.315699, 123.885437 ) * 0.621371 ) ).toEqual( 354 );
+        });
+    });
     
     // describe( "#getRepos", function() {
     //     it( "should get the repository contents", function() {
