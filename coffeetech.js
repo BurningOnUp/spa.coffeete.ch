@@ -1,14 +1,18 @@
+// BEGIN MODULE_DEFINITION
 var mod = angular.module( 'coffeetech', [] );
 
 mod.factory( 'Github', function() {
     return new Github({});
 });
+// END MODULE_DEFINITION
 
 mod.factory( 'Geo', [ '$window', function( $window ) {
     return $window.navigator.geolocation;
 } ] );
 
 mod.controller( 'GithubCtrl', [ '$scope', 'Github', 'Geo', function( $scope, ghs, Geo ) {
+    $scope.messages = []
+
     $scope.init = function() {
         $scope.getCurrentLocation( function( position ) {
             $scope.latitude = position.coords.latitude;
@@ -18,10 +22,22 @@ mod.controller( 'GithubCtrl', [ '$scope', 'Github', 'Geo', function( $scope, ghs
                 $scope.cities = JSON.parse( data ); // # <3>
                 // Determine our current city
                 $scope.detectCurrentCity();
+
+                // If we have a city, get it
+                if( $scope.city ) {
+                    $scope.retrieveCity();
+                }
+
                 $scope.$apply();
             });
         });
     };
+
+    $scope.retrieveCity = function() {
+        $scope.repo.read( "gh-pages", $scope.city.name + ".json", function(err, data) { 
+            $scope.shops = JSON.parse( data );
+        });
+    }
 
     $scope.getCurrentLocation = function( cb ) {
         if( undefined != Geo ) {

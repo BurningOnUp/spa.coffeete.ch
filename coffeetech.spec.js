@@ -15,7 +15,7 @@ describe( "GithubCtrl", function() {
 
     function generateMockRepositorySupport() {
         repo = { read: function( branch, filename, cb ) {
-            cb( undefined, JSON.stringify( CITIES ) );
+            cb( undefined, JSON.stringify( filename == "cities.json" ? CITIES : PORTLAND ) );
         } };
         spyOn( repo, "read" ).andCallThrough();
 
@@ -43,6 +43,7 @@ describe( "GithubCtrl", function() {
             expect( repo.read ).toHaveBeenCalled();
             expect( scope.cities.length ).toEqual( 2 );
             expect( scope.city.name ).toEqual( "portland" );
+            expect( scope.shops.length ).toEqual( 3 );
         });
     });
 
@@ -52,6 +53,7 @@ describe( "GithubCtrl", function() {
         });
     });
     
+
     // describe( "#getRepos", function() {
     //     it( "should get the repository contents", function() {
     //         scope.init();
