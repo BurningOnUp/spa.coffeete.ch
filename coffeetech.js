@@ -36,6 +36,7 @@ mod.controller( 'GithubCtrl', [ '$scope', 'Github', 'Geo', function( $scope, ghs
     $scope.retrieveCity = function() {
         $scope.repo.read( "gh-pages", $scope.city.name + ".json", function(err, data) { 
             $scope.shops = JSON.parse( data );
+            $scope.$apply();
         });
     }
 
