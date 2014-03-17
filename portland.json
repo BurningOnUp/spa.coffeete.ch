@@ -12,7 +12,10 @@
   {
     "name": "Very Bad Coffee Shop",
     "latitude": 45.522181,
-    "longitude": -122.63709
+    "longitude": -122.63709,
+    "information": [
+      "No turtles allowed"
+    ]
   },
   {
     "name": "Mediocre Coffee Shop",
