@@ -1,3 +1,28 @@
-[ { "name" : "Very Good Coffee Shop", "latitude" : 45.52292,  "longitude" : -122.643074, "information" : [ "offers gluten free desserts", "free wifi", "accepts dogs" ] },
-{ "name" : "Very Bad Coffee Shop", "latitude" : 45.522181, "longitude" : -122.63709 },
-{ "name" : "Mediocre Coffee Shop", "latitude" : 45.520437, "longitude" : -122.67846 } ]
+[
+  {
+    "name": "Very Good Coffee Shop",
+    "latitude": 45.52292,
+    "longitude": -122.643074,
+    "information": [
+      "offers gluten free desserts",
+      "free wifi",
+      "accepts dogs"
+    ],
+    "$$hashKey": "004"
+  },
+  {
+    "name": "Very Bad Coffee Shop",
+    "latitude": 45.522181,
+    "longitude": -122.63709,
+    "$$hashKey": "005"
+  },
+  {
+    "name": "Mediocre Coffee Shop",
+    "latitude": 45.520437,
+    "longitude": -122.67846,
+    "$$hashKey": "006",
+    "information": [
+      "Very nice bagels"
+    ]
+  }
+]
